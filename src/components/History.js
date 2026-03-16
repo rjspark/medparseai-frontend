@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { reportsAPI } from "../api";
+import { reportsAPI } from "../services/api";
 import {
   Search, FileText, Calendar, Building2, Eye,
   Activity, TrendingUp, AlertTriangle, Users,

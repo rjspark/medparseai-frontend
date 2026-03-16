@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Activity, Mail, Lock, Heart, Zap, Shield, BarChart2 } from 'lucide-react';
-import { authAPI } from '../api';   // ← components/ is one level below src/ where api.js lives
+import { authAPI } from '../services/api';
 import './Login.css';
 
 const Login = ({ onLogin }) => {
