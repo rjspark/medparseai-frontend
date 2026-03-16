@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+.upload-root { max-width: 1100px; position: relative; z-index: 1; }
+.fade-in { animation: fadeUp 0.35s ease both; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;} }
+
+.upload-page-header { margin-bottom: 24px; }
+.upload-page-title { font-size: 26px; font-weight: 800; color: #ffffff; margin-bottom: 5px; letter-spacing: -0.5px; }
+.upload-page-sub { font-size: 14px; color: #94a3b8; }
+
+.upload-layout { display: grid; grid-template-columns: 1fr 300px; gap: 22px; align-items: start; }
+.upload-main { display: flex; flex-direction: column; gap: 16px; }
+
+/* Patient Info */
+.patient-info-card {
+  background: rgba(255,255,255,0.11); backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.16); border-radius: 16px; padding: 22px;
+}
+.patient-info-title { font-size: 14px; font-weight: 700; color: #ffffff; margin-bottom: 14px; }
+.patient-info-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.pi-field { display: flex; flex-direction: column; gap: 5px; }
+.pi-field label { font-size: 11.5px; font-weight: 600; color: #94a3b8; }
+.pi-field input, .pi-field select {
+  padding: 9px 12px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 9px; color: #e2e8f0; font-size: 13px; font-family: 'Plus Jakarta Sans',sans-serif; outline: none; transition: all 0.2s;
+}
+.pi-field input:focus, .pi-field select:focus { border-color: rgba(56,189,248,0.45); background: rgba(255,255,255,0.13); }
+.pi-field input::placeholder { color: #64748b; }
+.pi-field select { color: #cbd5e1; }
+.pi-field input[type="date"] { color: #cbd5e1; }
+.pi-field input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.6); }
+.pi-field select option { background: #0d1a3a; color: #e2e8f0; }
+
+/* Dropzone */
+.dropzone {
+  border: 2px dashed rgba(56,189,248,0.28); border-radius: 18px;
+  background: rgba(255,255,255,0.07); backdrop-filter: blur(16px);
+  padding: 52px 32px; text-align: center; cursor: pointer; transition: all 0.22s;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.dropzone:hover, .dropzone-active { border-color: #38bdf8; background: rgba(56,189,248,0.1); transform: scale(1.005); }
+.dropzone-icon-ring { width: 72px; height: 72px; border-radius: 50%; background: rgba(56,189,248,0.1); border: 2px solid rgba(56,189,248,0.25); display: flex; align-items: center; justify-content: center; color: #38bdf8; margin-bottom: 4px; }
+.dropzone-title { font-size: 18px; font-weight: 700; color: #ffffff; }
+.dropzone-sub { font-size: 14px; color: #94a3b8; }
+.dropzone-types { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.dropzone-types span { padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); font-size: 12px; font-weight: 600; color: #cbd5e1; }
+.type-sep { background: none !important; border: none !important; color: #475569 !important; font-weight: 400 !important; }
+
+/* File List */
+.file-list { background: rgba(255,255,255,0.11); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.16); border-radius: 14px; overflow: hidden; }
+.file-list-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; font-weight: 600; color: #94a3b8; }
+.add-more-btn { display: flex; align-items: center; gap: 5px; padding: 5px 12px; border-radius: 8px; border: 1px solid rgba(56,189,248,0.3); background: rgba(56,189,248,0.1); color: #38bdf8; font-size: 12.5px; font-weight: 600; cursor: pointer; font-family: 'Plus Jakarta Sans',sans-serif; transition: all 0.15s; }
+.add-more-btn:hover { background: rgba(56,189,248,0.18); }
+.file-row { display: flex; align-items: center; gap: 12px; padding: 13px 16px; border-bottom: 1px solid rgba(255,255,255,0.07); transition: background 0.15s; }
+.file-row:last-child { border-bottom: none; }
+.file-row:hover { background: rgba(255,255,255,0.07); }
+.file-row.done       { background: rgba(16,185,129,0.07); }
+.file-row.error      { background: rgba(239,68,68,0.07); }
+.file-row.processing { background: rgba(56,189,248,0.07); }
+.file-row-icon { width: 38px; height: 38px; border-radius: 9px; background: rgba(56,189,248,0.1); display: flex; align-items: center; justify-content: center; color: #38bdf8; flex-shrink: 0; }
+.file-row-info { flex: 1; min-width: 0; }
+.file-row-name { font-size: 13.5px; font-weight: 600; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.file-row-size { font-size: 12px; color: #64748b; margin-top: 2px; }
+.file-row-status { display: flex; align-items: center; }
+.mini-spinner { width: 18px; height: 18px; border: 2px solid rgba(56,189,248,0.2); border-top-color: #38bdf8; border-radius: 50%; animation: spin 0.7s linear infinite; }
+@keyframes spin { to{transform:rotate(360deg);} }
+.status-done  { color: #34d399; }
+.status-error { color: #f87171; }
+.remove-btn { background: none; border: none; color: #475569; cursor: pointer; padding: 4px; border-radius: 6px; transition: all 0.15s; display: flex; }
+.remove-btn:hover { color: #f87171; background: rgba(239,68,68,0.12); }
+.error-banner { display: flex; align-items: center; gap: 10px; padding: 13px 16px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); border-radius: 12px; color: #f87171; font-size: 14px; }
+
+.process-btn {
+  width: 100%; padding: 16px 24px; border: none; border-radius: 14px;
+  background: linear-gradient(135deg, #2563eb, #0891b2);
+  color: #fff; font-size: 15.5px; font-weight: 700; font-family: 'Plus Jakarta Sans',sans-serif; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: all 0.25s; box-shadow: 0 4px 22px rgba(37,99,235,0.4);
+}
+.process-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 32px rgba(37,99,235,0.55); }
+.process-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-spin { width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
+
+/* Sidebar */
+.upload-sidebar { display: flex; flex-direction: column; gap: 14px; }
+.info-card { background: rgba(255,255,255,0.11); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.16); border-radius: 14px; padding: 18px; }
+.info-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+.info-card-header h3 { font-size: 14px; font-weight: 700; color: #ffffff; }
+.info-card-icon { color: #38bdf8; }
+.info-card-icon.green { color: #34d399; }
+.stat-rows { display: flex; flex-direction: column; gap: 9px; }
+.stat-row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #94a3b8; }
+.stat-row strong { font-weight: 700; color: #ffffff; }
+.stat-row strong.green  { color: #34d399; }
+.stat-row strong.blue   { color: #38bdf8; }
+.stat-row strong.purple { color: #a78bfa; }
+.labs-grid { display: flex; flex-direction: column; gap: 7px; }
+.lab-chip { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: #cbd5e1; padding: 5px 10px; border-radius: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); }
+.lab-chip svg { color: #34d399; flex-shrink: 0; }
+.lab-chip.muted { color: #475569; }
+.tips-emoji { font-size: 18px; }
+.tips-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.tips-list li { font-size: 12.5px; color: #94a3b8; padding-left: 14px; position: relative; }
+.tips-list li::before { content:'·'; position:absolute; left:4px; color:#38bdf8; font-weight:700; }
+
+/* EHR View */
+.ehr-view-root { display: flex; flex-direction: column; gap: 18px; position: relative; z-index: 1; }
+.ehr-action-bar { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.11); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.16); border-radius: 14px; padding: 14px 20px; }
+.ehr-back-btn { display: flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: #cbd5e1; font-size: 14px; font-weight: 500; font-family: 'Plus Jakarta Sans',sans-serif; cursor: pointer; transition: all 0.15s; }
+.ehr-back-btn:hover { background: rgba(255,255,255,0.14); color: #ffffff; }
+.ehr-action-btns { display: flex; gap: 10px; }
+.ehr-dl-btn { display: flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 10px; border: none; font-size: 14px; font-weight: 600; font-family: 'Plus Jakarta Sans',sans-serif; cursor: pointer; transition: all 0.2s; }
+.ehr-dl-btn.primary { background: linear-gradient(135deg,#2563eb,#0891b2); color: #fff; box-shadow: 0 3px 14px rgba(37,99,235,0.38); }
+.ehr-dl-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 5px 22px rgba(37,99,235,0.55); }
+
+/* EHR Report (white for printability) */
+.ehr-report-card { background: rgba(255,255,255,0.97); border-radius: 18px; padding: 40px 44px; box-shadow: 0 8px 44px rgba(0,0,0,0.45); }
+.ehr-print-header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 24px; margin-bottom: 28px; border-bottom: 3px solid transparent; border-image: linear-gradient(90deg,#2563eb,#06b6d4) 1; }
+.ehr-brand { display: flex; align-items: center; gap: 14px; }
+.ehr-brand-icon { width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg,#2563eb,#06b6d4); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(37,99,235,0.35); }
+.ehr-brand-name { font-size: 24px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; }
+.ehr-brand-sub { font-size: 12px; color: #64748b; margin-top: 3px; }
+.ehr-print-meta { text-align: right; font-size: 12.5px; color: #64748b; line-height: 1.9; }
+.ehr-print-meta strong { color: #1e293b; }
+.ehr-summary-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 24px; }
+.ehr-summary-card { border-radius: 12px; padding: 18px; text-align: center; border: 1px solid; }
+.ehr-summary-card.blue  { background: #eff6ff; border-color: #bfdbfe; }
+.ehr-summary-card.green { background: #f0fdf4; border-color: #bbf7d0; }
+.ehr-summary-card.red   { background: #fff5f5; border-color: #fecaca; }
+.ehr-summary-card.amber { background: #fffbeb; border-color: #fde68a; }
+.esc-num { font-size: 32px; font-weight: 800; color: #0f172a; }
+.ehr-summary-card.green .esc-num { color: #059669; }
+.ehr-summary-card.red .esc-num   { color: #dc2626; }
+.ehr-summary-card.amber .esc-num { color: #d97706; }
+.ehr-summary-card.blue .esc-num  { color: #2563eb; }
+.esc-label { font-size: 12px; color: #64748b; margin-top: 4px; font-weight: 500; }
+.ehr-alert-box { display: flex; align-items: flex-start; gap: 12px; padding: 16px 20px; background: #fff7ed; border: 1px solid #fed7aa; border-radius: 12px; margin-bottom: 24px; color: #9a3412; }
+.ehr-alert-box svg { flex-shrink: 0; margin-top: 1px; }
+.ehr-alert-box strong { font-weight: 700; display: block; margin-bottom: 3px; }
+.ehr-alert-box p { font-size: 13px; color: #c2410c; }
+.ehr-category { margin-bottom: 28px; }
+.ehr-cat-title { font-size: 13px; font-weight: 700; color: #1e3a8a; background: #eff6ff; padding: 10px 16px; border-radius: 8px 8px 0 0; border: 1px solid #bfdbfe; border-bottom: none; }
+.ehr-param-table { width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; overflow: hidden; }
+.ehr-param-table th { background: #f8fafc; font-size: 10.5px; font-weight: 700; letter-spacing: 0.5px; color: #64748b; text-transform: uppercase; padding: 10px 16px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+.ehr-param-table td { padding: 12px 16px; border-bottom: 1px solid #f1f5f9; font-size: 13.5px; color: #374151; }
+.ehr-param-table tr:last-child td { border-bottom: none; }
+.ehr-param-table .row-abnormal td { background: #fffbeb; }
+.param-name-cell { font-weight: 600; color: #1e293b; }
+.param-val-cell { font-weight: 800; font-size: 15px; }
+.ehr-status-chip { display: inline-flex; align-items: center; padding: 3px 12px; border-radius: 100px; font-size: 11px; font-weight: 700; }
+.ehr-footer-note { font-size: 11.5px; color: #94a3b8; text-align: center; border-top: 1px solid #f1f5f9; padding-top: 24px; margin-top: 16px; line-height: 1.7; }
+
+@media (max-width:900px) {
+  .upload-layout { grid-template-columns: 1fr; }
+  .patient-info-grid { grid-template-columns: 1fr 1fr; }
+  .ehr-summary-grid { grid-template-columns: repeat(2,1fr); }
+  .ehr-report-card { padding: 24px 20px; }
+}
+
+/* ── Visibility fixes ─────────────────────────────────────────────── */
+/* Make select dropdown text bright */
+.pi-field select { color: #cbd5e1 !important; }
+.pi-field select option { color: #cbd5e1; background: #0d1a3a; }
+
+/* Make date input text bright */
+.pi-field input[type="date"] { color: #cbd5e1; }
+.pi-field input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.7); cursor: pointer; }
+
+/* Make number input text bright */
+.pi-field input[type="number"] { color: #cbd5e1; }
+
+/* Dropzone icon ring brighter */
+.dropzone-icon-ring { color: #38bdf8; }
