@@ -45,9 +45,13 @@
 
 **MedParseAI** is a full-stack AI-powered web application built for Indian healthcare professionals. It takes blood test reports from major diagnostic labs (PDF or image) and extracts 50+ medical parameters into a clean, structured Electronic Health Record (EHR) — complete with reference ranges, abnormal value detection, and a printable PDF report.
 
-Built as a **6th Semester B.Tech Computer Science** final year project (2025), this app is deployed as a real production website accessible to anyone in the world.
-
 ---
+<img width="958" height="434" alt="Image" src="https://github.com/user-attachments/assets/8aca118b-7168-41eb-9bd0-14cc17ce4774" />
+
+<img width="960" height="441" alt="Image" src="https://github.com/user-attachments/assets/9bc7e6d8-d2ca-4a44-9202-3ffb021fbda5" />
+<img width="960" height="450" alt="Image" src="https://github.com/user-attachments/assets/129dbab7-2f39-404e-a11f-e0087b83c88f" />
+
+![Image](https://github.com/user-attachments/assets/ca4eef21-180e-4d0e-99f4-6bde573b0418)
 
 ## ✨ Features
 
